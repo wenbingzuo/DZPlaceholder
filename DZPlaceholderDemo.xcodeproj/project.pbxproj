@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D0C10531D6153FE000C29A7 /* UITableView+DZPlaceholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0C10521D6153FE000C29A7 /* UITableView+DZPlaceholder.m */; };
 		8D3A60BD1D5D70C0007EDEB4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D3A60BC1D5D70C0007EDEB4 /* main.m */; };
 		8D3A60C01D5D70C0007EDEB4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D3A60BF1D5D70C0007EDEB4 /* AppDelegate.m */; };
 		8D3A60C31D5D70C0007EDEB4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D3A60C21D5D70C0007EDEB4 /* ViewController.m */; };
 		8D3A60C61D5D70C0007EDEB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D3A60C41D5D70C0007EDEB4 /* Main.storyboard */; };
 		8D3A60C81D5D70C0007EDEB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D3A60C71D5D70C0007EDEB4 /* Assets.xcassets */; };
 		8D3A60CB1D5D70C0007EDEB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D3A60C91D5D70C0007EDEB4 /* LaunchScreen.storyboard */; };
-		8D3A60D81D5D717C007EDEB4 /* UITableView+DZPlaceholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D3A60D71D5D717C007EDEB4 /* UITableView+DZPlaceholder.m */; };
 		B2FD20107F8F9D59F3DC6BD2 /* libPods-DZPlaceholderDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 063A3255747CEDEA6D5EB20C /* libPods-DZPlaceholderDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -21,6 +21,8 @@
 		063A3255747CEDEA6D5EB20C /* libPods-DZPlaceholderDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DZPlaceholderDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		19E450CA80EACB9C03F31A83 /* Pods-DZPlaceholderDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DZPlaceholderDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-DZPlaceholderDemo/Pods-DZPlaceholderDemo.release.xcconfig"; sourceTree = "<group>"; };
 		1F54EBA9D8DA89F8E69A676C /* Pods-DZPlaceholderDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DZPlaceholderDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DZPlaceholderDemo/Pods-DZPlaceholderDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		8D0C10511D6153FE000C29A7 /* UITableView+DZPlaceholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+DZPlaceholder.h"; sourceTree = "<group>"; };
+		8D0C10521D6153FE000C29A7 /* UITableView+DZPlaceholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+DZPlaceholder.m"; sourceTree = "<group>"; };
 		8D3A60B81D5D70C0007EDEB4 /* DZPlaceholderDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DZPlaceholderDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D3A60BC1D5D70C0007EDEB4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D3A60BE1D5D70C0007EDEB4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -31,8 +33,6 @@
 		8D3A60C71D5D70C0007EDEB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8D3A60CA1D5D70C0007EDEB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8D3A60CC1D5D70C0007EDEB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8D3A60D61D5D717C007EDEB4 /* UITableView+DZPlaceholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+DZPlaceholder.h"; sourceTree = "<group>"; };
-		8D3A60D71D5D717C007EDEB4 /* UITableView+DZPlaceholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+DZPlaceholder.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,10 +56,19 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		8D0C10501D6153FE000C29A7 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				8D0C10511D6153FE000C29A7 /* UITableView+DZPlaceholder.h */,
+				8D0C10521D6153FE000C29A7 /* UITableView+DZPlaceholder.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		8D3A60AF1D5D70C0007EDEB4 = {
 			isa = PBXGroup;
 			children = (
-				8D3A60D21D5D70E6007EDEB4 /* DZPlaceholder */,
+				8D0C10501D6153FE000C29A7 /* Classes */,
 				8D3A60BA1D5D70C0007EDEB4 /* DZPlaceholderDemo */,
 				8D3A60B91D5D70C0007EDEB4 /* Products */,
 				51FC48219F77A15B539885D6 /* Pods */,
@@ -97,15 +106,6 @@
 				8D3A60BC1D5D70C0007EDEB4 /* main.m */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		8D3A60D21D5D70E6007EDEB4 /* DZPlaceholder */ = {
-			isa = PBXGroup;
-			children = (
-				8D3A60D61D5D717C007EDEB4 /* UITableView+DZPlaceholder.h */,
-				8D3A60D71D5D717C007EDEB4 /* UITableView+DZPlaceholder.m */,
-			);
-			path = DZPlaceholder;
 			sourceTree = "<group>";
 		};
 		D6B6AD59D743DE4F9CBDC6F5 /* Frameworks */ = {
@@ -239,8 +239,8 @@
 			files = (
 				8D3A60C31D5D70C0007EDEB4 /* ViewController.m in Sources */,
 				8D3A60C01D5D70C0007EDEB4 /* AppDelegate.m in Sources */,
-				8D3A60D81D5D717C007EDEB4 /* UITableView+DZPlaceholder.m in Sources */,
 				8D3A60BD1D5D70C0007EDEB4 /* main.m in Sources */,
+				8D0C10531D6153FE000C29A7 /* UITableView+DZPlaceholder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
