@@ -13,9 +13,14 @@
 		8D3A60C61D5D70C0007EDEB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D3A60C41D5D70C0007EDEB4 /* Main.storyboard */; };
 		8D3A60C81D5D70C0007EDEB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D3A60C71D5D70C0007EDEB4 /* Assets.xcassets */; };
 		8D3A60CB1D5D70C0007EDEB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D3A60C91D5D70C0007EDEB4 /* LaunchScreen.storyboard */; };
+		8D3A60D81D5D717C007EDEB4 /* UITableView+DZPlaceholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D3A60D71D5D717C007EDEB4 /* UITableView+DZPlaceholder.m */; };
+		B2FD20107F8F9D59F3DC6BD2 /* libPods-DZPlaceholderDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 063A3255747CEDEA6D5EB20C /* libPods-DZPlaceholderDemo.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		063A3255747CEDEA6D5EB20C /* libPods-DZPlaceholderDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DZPlaceholderDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		19E450CA80EACB9C03F31A83 /* Pods-DZPlaceholderDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DZPlaceholderDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-DZPlaceholderDemo/Pods-DZPlaceholderDemo.release.xcconfig"; sourceTree = "<group>"; };
+		1F54EBA9D8DA89F8E69A676C /* Pods-DZPlaceholderDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DZPlaceholderDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DZPlaceholderDemo/Pods-DZPlaceholderDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		8D3A60B81D5D70C0007EDEB4 /* DZPlaceholderDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DZPlaceholderDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D3A60BC1D5D70C0007EDEB4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D3A60BE1D5D70C0007EDEB4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -26,6 +31,8 @@
 		8D3A60C71D5D70C0007EDEB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8D3A60CA1D5D70C0007EDEB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8D3A60CC1D5D70C0007EDEB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D3A60D61D5D717C007EDEB4 /* UITableView+DZPlaceholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+DZPlaceholder.h"; sourceTree = "<group>"; };
+		8D3A60D71D5D717C007EDEB4 /* UITableView+DZPlaceholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+DZPlaceholder.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +40,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2FD20107F8F9D59F3DC6BD2 /* libPods-DZPlaceholderDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		51FC48219F77A15B539885D6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1F54EBA9D8DA89F8E69A676C /* Pods-DZPlaceholderDemo.debug.xcconfig */,
+				19E450CA80EACB9C03F31A83 /* Pods-DZPlaceholderDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		8D3A60AF1D5D70C0007EDEB4 = {
 			isa = PBXGroup;
 			children = (
+				8D3A60D21D5D70E6007EDEB4 /* DZPlaceholder */,
 				8D3A60BA1D5D70C0007EDEB4 /* DZPlaceholderDemo */,
 				8D3A60B91D5D70C0007EDEB4 /* Products */,
+				51FC48219F77A15B539885D6 /* Pods */,
+				D6B6AD59D743DE4F9CBDC6F5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,6 +99,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		8D3A60D21D5D70E6007EDEB4 /* DZPlaceholder */ = {
+			isa = PBXGroup;
+			children = (
+				8D3A60D61D5D717C007EDEB4 /* UITableView+DZPlaceholder.h */,
+				8D3A60D71D5D717C007EDEB4 /* UITableView+DZPlaceholder.m */,
+			);
+			path = DZPlaceholder;
+			sourceTree = "<group>";
+		};
+		D6B6AD59D743DE4F9CBDC6F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				063A3255747CEDEA6D5EB20C /* libPods-DZPlaceholderDemo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -86,9 +123,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8D3A60CF1D5D70C0007EDEB4 /* Build configuration list for PBXNativeTarget "DZPlaceholderDemo" */;
 			buildPhases = (
+				5891C9EF2524A64715BE5050 /* [CP] Check Pods Manifest.lock */,
 				8D3A60B41D5D70C0007EDEB4 /* Sources */,
 				8D3A60B51D5D70C0007EDEB4 /* Frameworks */,
 				8D3A60B61D5D70C0007EDEB4 /* Resources */,
+				2D66EEC861AEC1D9ED9D0344 /* [CP] Embed Pods Frameworks */,
+				21F0BED68EA7A0E3D04BEBF9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -144,6 +184,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		21F0BED68EA7A0E3D04BEBF9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DZPlaceholderDemo/Pods-DZPlaceholderDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2D66EEC861AEC1D9ED9D0344 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DZPlaceholderDemo/Pods-DZPlaceholderDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5891C9EF2524A64715BE5050 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8D3A60B41D5D70C0007EDEB4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -151,6 +239,7 @@
 			files = (
 				8D3A60C31D5D70C0007EDEB4 /* ViewController.m in Sources */,
 				8D3A60C01D5D70C0007EDEB4 /* AppDelegate.m in Sources */,
+				8D3A60D81D5D717C007EDEB4 /* UITableView+DZPlaceholder.m in Sources */,
 				8D3A60BD1D5D70C0007EDEB4 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -263,6 +352,7 @@
 		};
 		8D3A60D01D5D70C0007EDEB4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1F54EBA9D8DA89F8E69A676C /* Pods-DZPlaceholderDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = DZPlaceholderDemo/Info.plist;
@@ -274,6 +364,7 @@
 		};
 		8D3A60D11D5D70C0007EDEB4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 19E450CA80EACB9C03F31A83 /* Pods-DZPlaceholderDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = DZPlaceholderDemo/Info.plist;
@@ -302,6 +393,7 @@
 				8D3A60D11D5D70C0007EDEB4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
