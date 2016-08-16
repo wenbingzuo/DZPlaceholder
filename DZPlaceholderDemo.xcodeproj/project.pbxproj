@@ -10,10 +10,10 @@
 		8D0C10531D6153FE000C29A7 /* UIScrollView+DZPlaceholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0C10521D6153FE000C29A7 /* UIScrollView+DZPlaceholder.m */; };
 		8D3A60BD1D5D70C0007EDEB4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D3A60BC1D5D70C0007EDEB4 /* main.m */; };
 		8D3A60C01D5D70C0007EDEB4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D3A60BF1D5D70C0007EDEB4 /* AppDelegate.m */; };
-		8D3A60C31D5D70C0007EDEB4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D3A60C21D5D70C0007EDEB4 /* ViewController.m */; };
 		8D3A60C61D5D70C0007EDEB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D3A60C41D5D70C0007EDEB4 /* Main.storyboard */; };
 		8D3A60C81D5D70C0007EDEB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D3A60C71D5D70C0007EDEB4 /* Assets.xcassets */; };
 		8D3A60CB1D5D70C0007EDEB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D3A60C91D5D70C0007EDEB4 /* LaunchScreen.storyboard */; };
+		8DAFFB521D62FEE9007C09E5 /* DZCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DAFFB511D62FEE9007C09E5 /* DZCollectionViewController.m */; };
 		B2FD20107F8F9D59F3DC6BD2 /* libPods-DZPlaceholderDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 063A3255747CEDEA6D5EB20C /* libPods-DZPlaceholderDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -27,12 +27,12 @@
 		8D3A60BC1D5D70C0007EDEB4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D3A60BE1D5D70C0007EDEB4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8D3A60BF1D5D70C0007EDEB4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		8D3A60C11D5D70C0007EDEB4 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		8D3A60C21D5D70C0007EDEB4 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		8D3A60C51D5D70C0007EDEB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8D3A60C71D5D70C0007EDEB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8D3A60CA1D5D70C0007EDEB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8D3A60CC1D5D70C0007EDEB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8DAFFB501D62FEE9007C09E5 /* DZCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZCollectionViewController.h; sourceTree = "<group>"; };
+		8DAFFB511D62FEE9007C09E5 /* DZCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZCollectionViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,8 +89,8 @@
 			children = (
 				8D3A60BE1D5D70C0007EDEB4 /* AppDelegate.h */,
 				8D3A60BF1D5D70C0007EDEB4 /* AppDelegate.m */,
-				8D3A60C11D5D70C0007EDEB4 /* ViewController.h */,
-				8D3A60C21D5D70C0007EDEB4 /* ViewController.m */,
+				8DAFFB501D62FEE9007C09E5 /* DZCollectionViewController.h */,
+				8DAFFB511D62FEE9007C09E5 /* DZCollectionViewController.m */,
 				8D3A60C41D5D70C0007EDEB4 /* Main.storyboard */,
 				8D3A60C71D5D70C0007EDEB4 /* Assets.xcassets */,
 				8D3A60C91D5D70C0007EDEB4 /* LaunchScreen.storyboard */,
@@ -237,7 +237,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D3A60C31D5D70C0007EDEB4 /* ViewController.m in Sources */,
+				8DAFFB521D62FEE9007C09E5 /* DZCollectionViewController.m in Sources */,
 				8D3A60C01D5D70C0007EDEB4 /* AppDelegate.m in Sources */,
 				8D3A60BD1D5D70C0007EDEB4 /* main.m in Sources */,
 				8D0C10531D6153FE000C29A7 /* UIScrollView+DZPlaceholder.m in Sources */,

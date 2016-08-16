@@ -122,12 +122,13 @@
 - (void)__dz_managePlaceholder {
     if (![self __dz_shouldManagePlaceholder]) return;
     
+    BOOL showPlaceholderFlag = [self __dz_shouldShowPlaceholder];
     BOOL canScrollFlag = [self.dz_placeholderDataSource respondsToSelector:@selector(canScrollWhenShowingPlaceholderInScrollView:)];
     if (canScrollFlag) {
         if (!self.__dz_innerPlaceholderContainerView.superview) {
             self.__dz_scrollEnabled = self.scrollEnabled;
         }
-        if ([self __dz_shouldShowPlaceholder]) {
+        if (showPlaceholderFlag) {
             BOOL flag = [self.dz_placeholderDataSource canScrollWhenShowingPlaceholderInScrollView:self];
             self.scrollEnabled = flag;
         } else {
@@ -135,7 +136,7 @@
         }
     }
     
-    if ([self __dz_shouldShowPlaceholder]) {
+    if (showPlaceholderFlag) {
         [self.dz_placeholderDataSource scrollView:self configPlaceholderInContainerView:self.__dz_innerPlaceholderContainerView];
         [self __dz_showPlaceholder];
         [self __dz_addPlaceholderConstraints];
@@ -164,11 +165,9 @@
             @selector(insertSections:withRowAnimation:),
             @selector(deleteSections:withRowAnimation:),
             @selector(reloadSections:withRowAnimation:),
-            @selector(moveSection:toSection:),
             @selector(insertRowsAtIndexPaths:withRowAnimation:),
             @selector(deleteRowsAtIndexPaths:withRowAnimation:),
-            @selector(reloadRowsAtIndexPaths:withRowAnimation:),
-            @selector(moveRowAtIndexPath:toIndexPath:)
+            @selector(reloadRowsAtIndexPaths:withRowAnimation:)
         };
         
         for (int i = 0; i < sizeof(selectors)/sizeof(SEL); i++) {
@@ -207,11 +206,6 @@
     [self dz_reloadSections:sections withRowAnimation:animation];
 }
 
-- (void)dz_moveSection:(NSInteger)section toSection:(NSInteger)newSection {
-    [self __dz_managePlaceholder];
-    [self dz_moveSection:section toSection:newSection];
-}
-
 - (void)dz_insertRowsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation {
     [self __dz_managePlaceholder];
     [self dz_insertRowsAtIndexPaths:indexPaths withRowAnimation:animation];
@@ -227,9 +221,77 @@
     [self dz_reloadRowsAtIndexPaths:indexPaths withRowAnimation:animation];
 }
 
-- (void)dz_moveRowAtIndexPath:(NSIndexPath *)indexPath toIndexPath:(NSIndexPath *)newIndexPath {
+@end
+
+@interface UICollectionView (DZPlaceholderForward)
+@end
+
+@implementation UICollectionView (DZPlaceholderForward)
+
++ (void)load {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        
+        SEL selectors[] = {
+            @selector(reloadData),
+            @selector(insertSections:),
+            @selector(deleteSections:),
+            @selector(moveSection:toSection:),
+            @selector(insertItemsAtIndexPaths:),
+            @selector(deleteItemsAtIndexPaths:),
+            @selector(reloadItemsAtIndexPaths:),
+            @selector(moveItemAtIndexPath:toIndexPath:)
+        };
+        
+        for (int i = 0; i < sizeof(selectors)/sizeof(SEL); i++) {
+            SEL originalSelector = selectors[i];
+            SEL swizzledSelector = NSSelectorFromString([@"dz_" stringByAppendingString:NSStringFromSelector(originalSelector)]);
+            Method originalMethod = class_getInstanceMethod(self, originalSelector);
+            Method swizzledMethod = class_getInstanceMethod(self, swizzledSelector);
+            
+            BOOL success = class_addMethod(self, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod));
+            if (success) {
+                class_replaceMethod(self, swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod));
+            } else {
+                method_exchangeImplementations(originalMethod, swizzledMethod);
+            }
+        }
+    });
+}
+
+- (void)dz_reloadData {
     [self __dz_managePlaceholder];
-    [self dz_moveRowAtIndexPath:indexPath toIndexPath:newIndexPath];
+    [self dz_reloadData];
+}
+
+- (void)dz_insertSections:(NSIndexSet *)sections {
+    [self __dz_managePlaceholder];
+    [self dz_insertSections:sections];
+}
+
+- (void)dz_deleteSections:(NSIndexSet *)sections {
+    [self __dz_managePlaceholder];
+    [self dz_deleteSections:sections];
+}
+
+- (void)dz_reloadSections:(NSIndexSet *)sections {
+    [self __dz_managePlaceholder];
+    [self dz_reloadSections:sections];
+}
+
+- (void)dz_insertItemsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths {
+    [self __dz_managePlaceholder];
+    [self dz_insertItemsAtIndexPaths:indexPaths];
+}
+
+- (void)dz_deleteItemsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths {
+    [self __dz_managePlaceholder];
+    [self dz_deleteItemsAtIndexPaths:indexPaths];
+}
+
+- (void)dz_reloadItemsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths {
+    [self __dz_managePlaceholder];
+    [self dz_reloadItemsAtIndexPaths:indexPaths];
 }
 
 @end
