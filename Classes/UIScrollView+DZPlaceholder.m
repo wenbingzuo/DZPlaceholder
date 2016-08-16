@@ -6,15 +6,15 @@
 //  Copyright © 2016 Wenbing Zuo. All rights reserved.
 //
 
-#import "UITableView+DZPlaceholder.h"
+#import "UIScrollView+DZPlaceholder.h"
 #import <objc/runtime.h>
 
-@interface UITableView ()
+@interface UIScrollView ()
 @property (nonatomic, assign) BOOL __dz_scrollEnabled;
 @property (nonatomic, strong) UIView *__dz_innerPlaceholderContainerView;
 @end
 
-@implementation UITableView (DZPlaceholder)
+@implementation UIScrollView (DZPlaceholder)
 
 - (UIView *)__dz_innerPlaceholderContainerView {
     UIView *containerView = objc_getAssociatedObject(self, _cmd);
@@ -67,45 +67,85 @@
     [self.__dz_innerPlaceholderContainerView removeFromSuperview];
 }
 
-- (void)__dz_managePlaceholder {
-    id <UITableViewDataSource> dataSource = self.dataSource;
-    
-    BOOL viewForPlaceholderFlag = [dataSource respondsToSelector:@selector(tableview:configPlaceholderInContainerView:)];
-    if (!viewForPlaceholderFlag) return;
-    
-    BOOL hasNoData = YES;
-    NSUInteger numberOfSections = 1;
-    if ([dataSource respondsToSelector:@selector(numberOfSectionsInTableView:)]) {
-        numberOfSections = [dataSource numberOfSectionsInTableView:self];
-    }
-    for (int i = 0; i < numberOfSections; i++) {
-        NSUInteger numberOfRows = [dataSource tableView:self numberOfRowsInSection:i];
-        if (numberOfRows != 0) {
-            hasNoData = NO;
-            break;
+- (void)setDz_placeholderDataSource:(id<DZScrollViewPlaceholderDataSource>)dz_placeholderDataSource {
+    objc_setAssociatedObject(self, @selector(dz_placeholderDataSource), dz_placeholderDataSource, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (id<DZScrollViewPlaceholderDataSource>)dz_placeholderDataSource {
+    return objc_getAssociatedObject(self, _cmd);
+}
+
+- (BOOL)__dz_shouldManagePlaceholder {
+    return self.dz_placeholderDataSource && [self.dz_placeholderDataSource respondsToSelector:@selector(scrollView:configPlaceholderInContainerView:)];
+}
+
+- (BOOL)__dz_shouldShowPlaceholder {
+    if ([self.dz_placeholderDataSource respondsToSelector:@selector(shouldShowPlaceholderInScrollView:)]) {
+        return [self.dz_placeholderDataSource shouldShowPlaceholderInScrollView:self];
+    } else if ([self isMemberOfClass:[UITableView class]]) {
+        UITableView *tableView = (UITableView *)self;
+        id <UITableViewDataSource> dataSource = tableView.dataSource;
+        BOOL hasNoData = YES;
+        NSUInteger numberOfSections = 1;
+        if ([dataSource respondsToSelector:@selector(numberOfSectionsInTableView:)]) {
+            numberOfSections = [dataSource numberOfSectionsInTableView:tableView];
         }
-    }
-    
-    BOOL canScrollFlag = [dataSource respondsToSelector:@selector(canScrollWhenShowingPlaceholderInTableView:)];
-    if (canScrollFlag) {
-        if (hasNoData) {
-            if (!self.__dz_innerPlaceholderContainerView.superview) {
-                self.__dz_scrollEnabled = self.scrollEnabled;
+        for (int i = 0; i < numberOfSections; i++) {
+            NSUInteger numberOfRows = [dataSource tableView:tableView numberOfRowsInSection:i];
+            if (numberOfRows != 0) {
+                hasNoData = NO;
+                break;
             }
-            BOOL flag = [dataSource performSelector:@selector(canScrollWhenShowingPlaceholderInTableView:) withObject:self];
+        }
+        return hasNoData;
+    } else if ([self isMemberOfClass:[UICollectionView class]]) {
+        UICollectionView *collectionView = (UICollectionView *)self;
+        id <UICollectionViewDataSource> dataSource = collectionView.dataSource;
+        BOOL hasNoData = YES;
+        NSUInteger numberOfSections = 1;
+        if ([dataSource respondsToSelector:@selector(numberOfSectionsInCollectionView:)]) {
+            numberOfSections = [dataSource numberOfSectionsInCollectionView:collectionView];
+        }
+        for (int i = 0; i < numberOfSections; i++) {
+            NSUInteger numberOfItems = [dataSource collectionView:collectionView numberOfItemsInSection:i];
+            if (numberOfItems != 0) {
+                hasNoData = NO;
+                break;
+            }
+        }
+        return hasNoData;
+    } else {
+        return NO;
+    }
+}
+
+- (void)__dz_managePlaceholder {
+    if (![self __dz_shouldManagePlaceholder]) return;
+    
+    BOOL canScrollFlag = [self.dz_placeholderDataSource respondsToSelector:@selector(canScrollWhenShowingPlaceholderInScrollView:)];
+    if (canScrollFlag) {
+        if (!self.__dz_innerPlaceholderContainerView.superview) {
+            self.__dz_scrollEnabled = self.scrollEnabled;
+        }
+        if ([self __dz_shouldShowPlaceholder]) {
+            BOOL flag = [self.dz_placeholderDataSource canScrollWhenShowingPlaceholderInScrollView:self];
             self.scrollEnabled = flag;
         } else {
             self.scrollEnabled = self.__dz_scrollEnabled;
         }
     }
     
-    if (hasNoData) {
-        [dataSource performSelector:@selector(tableview:configPlaceholderInContainerView:) withObject:self withObject:self.__dz_innerPlaceholderContainerView];
+    if ([self __dz_shouldShowPlaceholder]) {
+        [self.dz_placeholderDataSource scrollView:self configPlaceholderInContainerView:self.__dz_innerPlaceholderContainerView];
         [self __dz_showPlaceholder];
         [self __dz_addPlaceholderConstraints];
     } else {
         [self __dz_removePlaceholder];
     }
+}
+
+- (void)dz_reloadPlaceholder {
+    [self __dz_managePlaceholder];
 }
 
 @end

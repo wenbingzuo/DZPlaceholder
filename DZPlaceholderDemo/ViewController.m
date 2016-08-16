@@ -9,9 +9,9 @@
 #import "ViewController.h"
 #import "MJRefresh.h"
 #import <Masonry.h>
-#import "UITableView+DZPlaceholder.h"
+#import "UIScrollView+DZPlaceholder.h"
 
-@interface ViewController () <DZTableViewPlaceholderDataSource>
+@interface ViewController () <DZScrollViewPlaceholderDataSource>
 
 @property (nonatomic, strong) NSMutableArray *data;
 
@@ -32,6 +32,7 @@
     
     self.tableView.backgroundColor = [UIColor orangeColor];
     self.tableView.tableFooterView = [UIView new];
+    self.tableView.dz_placeholderDataSource = self;
     
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
     [self.tableView.mj_header beginRefreshing];
@@ -90,6 +91,20 @@ static BOOL flag = YES;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView.mj_header beginRefreshing];
+}
+
+- (void)scrollView:(UIScrollView *)scrollView configPlaceholderInContainerView:(UIView *)containerView {
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [containerView addSubview:button];
+    [button mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(containerView);
+    }];
+    [button setTitle:@"你点一下嘛" forState:UIControlStateNormal];
+    [button addTarget:self.tableView.mj_header action:@selector(beginRefreshing) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (BOOL)canScrollWhenShowingPlaceholderInScrollView:(UIScrollView *)scrollView {
+    return YES;
 }
 
 @end
